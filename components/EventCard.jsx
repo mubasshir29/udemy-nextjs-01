@@ -12,7 +12,7 @@ function EventCard({event}) {
   const exploreEvent = (e)=>{
     e.preventDefault()
     router.push({
-      pathname:'events/[id]',
+      pathname:'/events/[id]',
       query: {id: event.id}
     })
   }

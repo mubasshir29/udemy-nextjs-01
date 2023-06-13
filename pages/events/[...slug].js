@@ -7,12 +7,13 @@ function FilteredEvents() {
 
   const router = useRouter()
   console.log(router.query)
-  const {year, month} = router.query
+  const year = router.query.slug[0]
+  const month = router.query.slug[1]
   console.log("Year:",year, "Month:",month)
 
   const filteredData = data.filter(event => {
     const newDate = new Date(event.date)
-    if(newDate.getFullYear() == year && newDate.getMonth() == month){
+    if(newDate.getFullYear() == year && newDate.getMonth() == month-1){
       return event
     }
     //console.log(newDate.getMonth())

@@ -9,8 +9,8 @@ function SearchFilter() {
     const router = useRouter()
 
     const initialFilter = {
-      month: "",
-      year: ""
+      month: new Date().getMonth(),
+      year: new Date().getFullYear()
     }
 
     const [filterValue, setFilterValue] = useState(initialFilter)
@@ -23,8 +23,7 @@ function SearchFilter() {
       event.preventDefault()
       console.log(filterValue)
       router.push({
-        pathname: '/events/year/month',
-        query: {year: filterValue.year, month: filterValue.month}
+        pathname: `/events/${filterValue.year}/${filterValue.month}`,
       })
 
     }
@@ -33,13 +32,13 @@ function SearchFilter() {
         <div className='w-[80%] mx-auto flex  justify-center gap-24 items-center'>
           <label className='flex gap-2 items-center text-lg font-bold'>
             Month
-            <select name='month' onChange={e => valueChange(e)} className='w-36 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'>
-                {Months.map((month,index) => <option key={index} value={index}>{month}</option> )}
+            <select name='month' defaultValue={filterValue.month+1} onChange={e => valueChange(e)} className='w-36 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'>
+                {Months.map((month,index) => <option key={index} value={index+1}>{month}</option> )}
             </select>
           </label>
           <label className='flex gap-2 items-center text-lg font-bold'>
             Year
-            <select name='year' onChange={e => valueChange(e)} className='w-36 p-2.5 bg-slate-700 rounded-lg'>
+            <select name='year' defaultValue={filterValue.year}  onChange={e => valueChange(e)} className='w-36 p-2.5 bg-slate-700 rounded-lg'>
                 {Years.map((year,index) => <option key={index} value={year}>{year}</option> )}
             </select>
           </label>

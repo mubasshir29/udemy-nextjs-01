@@ -8,7 +8,6 @@ export default function Document() {
       <Head />
       <body>
         <NavBar />
-        <SearchFilter />
         <Main />
         <NextScript />
       </body>

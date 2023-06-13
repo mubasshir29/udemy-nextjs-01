@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import data from './../data/sampleData.json'
-import EventCard from '@/components/eventCard';
+import EventCard from '@/components/EventCard'
 
 
 const inter = Inter({ subsets: ['latin'] })
